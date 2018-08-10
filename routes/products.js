@@ -20,13 +20,16 @@ router.get('/', (req, res) => {
 // Index Route - Show All Products
 router.get('/', (req, res) => {
   // Get all products from DB
-  Product.find({})
-    .then(products => {
-      res.render('product/index', {
-        products: products
-      });
-    });
-});
+  Product.aggregate(
+    {"$group": {
+      _id: "category" } },
+    function(err, data) {
+      if(err)
+      throw err;
+      console.log(data)
+    }
+  )
+})
 
 //NEW - Show form to create new products
 router.get('/new', (req, res) => {
@@ -62,6 +65,36 @@ router.get('/:id', (req, res) => {
     }
   })
 });
+
+// EDIT PRODUCT ROUTE
+router.get('/:id/edit', (req, res) => {
+  Product.findById(req.params.id, (err, foundProduct) => {
+    res.render('product/edit', {product: foundProduct});
+  })
+});
+
+// UPDATE PRODUCT ROUTE
+router.put('/:id', (req, res) => {
+  //Find and update the correct product
+  Product.findByIdAndUpdate(req.params.id, req.body.product, (err, updatedProduct) => {
+    if(err){
+      res.redirect("/products")
+    } else {
+      res.redirect('/products/' + req.params.id)
+    }
+  })
+});
+
+//DELETE PRODUCTS ROUTE
+  router.delete('/:id', (req, res) => {
+    Product.findByIdAndRemove(req.params.id, (err) => {
+      if(err){
+        res.redirect("/products");
+      } else {
+        res.redirect('/products');
+      }
+    })
+  });
 
 
 module.exports = router;

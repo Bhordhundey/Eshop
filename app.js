@@ -8,9 +8,12 @@ const mongoose = require('mongoose');
 // Load routes
 const productsRoutes = require('./routes/products');
 
+const db = require('./config/database');
+
 // Connect to mongoose
 // mongoose.connect("mongodb://localhost/e-shop");  
-mongoose.connect("mongodb://bhord:bhord1234@ds119052.mlab.com:19052/eshop")
+// mongoose.connect("mongodb://bhord:bhord1234@ds119052.mlab.com:19052/eshop")
+mongoose.connect(db.mongoURI)
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
 

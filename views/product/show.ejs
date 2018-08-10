@@ -9,13 +9,13 @@
               <li class="list-group-item">Info 3</li>
           </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 mt-3 mb-5">
           <div class="img-thumbnail">
               <img class="img-responsive" src="<%= product.image %>">
               <div class="figure-caption">
                   <h5 class="text-primary">Product Name: <a href=""><%= product.name %></a></h5>
                   <h5 class="text-primary">Product Price: ₦<%= product.price %></h5>
-                  <h5 class="text-primary">Product Category: <%= product.Category %></h5>
+                  <h5 class="text-primary">Product Category: <%= product.category %></h5>
                   <p><%=product.description%></p>
 
                   <a class="btn btn-warning" href="/products/<%= product._id %>/edit">Edit</a>

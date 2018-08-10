@@ -1,0 +1,74 @@
+.img-thumbnail img{
+  width: 100%;
+}
+.img-thumbnail{
+  padding: 0;
+}
+.img-thumbnail .figure-caption{
+  padding: 9px;
+}
+textarea#description{
+  width: 100%;
+  min-height: 120px;
+}
+.card {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 4px;
+  color: #444444;
+}
+.navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.card .content {
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  padding: 10px 20px 20px;
+}
+
+.new-search-bar {
+  padding-left: 20px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  height: 52px;
+  font-size: 17px;
+  border: 1px;
+}
+
+.input-btn {
+  background: #4aa1f3;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  padding-left: 23px;
+  padding-right: 23px;
+  border: none;
+  height: 52px;
+  font-size: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+  text-shadow:none;
+  color:white !important;
+}
+
+.search-style {
+  width: 50%;
+  margin: 0 auto;
+}
+.add-apply{
+  background: #4aa1f3;
+  width: 100%;
+  text-shadow: none;
+  color: #ffffff;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.add-fav{
+  background: #4aa1f3;
+  width: 100%;
+  text-shadow: none;
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 5px 2px 5px 2px;
+}
