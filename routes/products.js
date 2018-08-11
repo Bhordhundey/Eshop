@@ -1,35 +1,96 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const async = require('async');
 const router = express.Router();
 
 // Load Idea Model
 require('../models/Product');
 const Product = mongoose.model('products');
 
-// Index Route - Show All Products
+
+// Index Route with async
 router.get('/', (req, res) => {
-  // Get all products from DB
-  Product.find({})
-    .then(products => {
-      res.render('product/index', {
-        products: products
+  async.parallel([
+    function(callback){
+      Product.find({}, (err, products) => {
+        callback(err, products)
+      })
+    },
+    function(callback){
+      Product.aggregate([
+        {$match: {}},
+        {$group: {_id: "$category"}}
+      ], (err, filteredProducts) => {
+        callback(err, filteredProducts);
       });
-    });
-});
+    }
+  ], (err, results) => {
+    const res1 = results[0];
+    const res2 = results[1];
+
+    // console.log("res1:", res1);
+    // console.log("res2", res2);
+
+      res.render('product/index', {
+        products: res1,
+        filteredProducts: res2
+      })  
+  })
+})
 
 // Index Route - Show All Products
-router.get('/', (req, res) => {
-  // Get all products from DB
-  Product.aggregate(
-    {"$group": {
-      _id: "category" } },
-    function(err, data) {
-      if(err)
-      throw err;
-      console.log(data)
-    }
-  )
-})
+// router.get('/', (req, res) => {
+//   // Get all products from DB
+//   Product.find({})
+//     .then(products => {
+//       Product.aggregate([
+//         {$match: {}},
+//         {$group: {_id: "$category"}}
+//       ], (err, filteredProducts) => {
+//         if(err){
+//           throw err;
+//         } else {
+//           // console.log(filteredProducts);
+//         }
+//       })
+//       res.render('products/index', {
+//         products: products,
+//         // filteredProducts: filteredProducts
+//       })
+//     });
+// });
+
+
+// Index Route - Show All Products
+// router.get('/', (req, res) => {
+//   // Get all products from DB
+//   // Product.find({})
+//   //   .then(products => {
+      
+//   //   });
+//     Product.aggregate([
+//       {$match: {}},
+//       {$group: {_id: "$category"}}
+//     ], (err, filteredProducts) => {
+//       if(err){
+//         console.log(err)
+//       } else {
+//         // console.log(products)
+//         console.log(filteredProducts)
+//         res.render('product/index', {
+//           // products: products,
+//           filteredProducts: filteredProducts
+//         })
+//       }
+//     })
+
+// });
+
+
+// res.render('product/index', {
+//   products: products
+// });
+
 
 //NEW - Show form to create new products
 router.get('/new', (req, res) => {

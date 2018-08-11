@@ -1,13 +1,5 @@
   <% include ../partials/header %>
 
-
-  <!-- <header class= "jumbotron mt-2">
-    <div class="container">
-      <h1>Welcome To E-Shop</h1>
-      <p>Order for the product of your choice. We offer the best service.</p>
-      <a class="btn btn-primary btn-large" href="/products/new">Add New Products</a>
-</div>            
-</header> -->
 <div class="row m-5">
     <div class="col-lg-3">
         <div class="filter-container">
@@ -20,10 +12,9 @@
                             <hr/>
                             <select class="form-control" name="" id="" >
                                 <option value="">Filter By Category</option>
-                                <option value="">Baby Care</option>
-                                <option value="">Provision</option>
-                                <option value="">Phone Gadgets</option>
-                                <option value="">Computer Gadgets</option>
+                                <% filteredProducts.forEach(function(filter) { %>
+                                    <option value="<%= filter._id %>"><%= filter._id %></option>
+                                <% }) %>
                             </select>
                             <div class="clearfix"></div>
                             <button class="btn add-apply">Apply</button>
@@ -41,9 +32,9 @@
                         <img class="img-thumbnail" src="<%= product.image %>">
                         <div class="caption">
                             <h4><%= product.name %></h4>
+                            <h6>Price: ₦<%= product.price %></h6>
                         </div>
-                        <hr>
-                        
+                        <hr> 
                         <h6>Product Category: <%= product.category %></h6>
                         <hr>
                         <div>

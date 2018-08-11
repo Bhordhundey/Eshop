@@ -39,19 +39,19 @@ body {
 }
 .slideshow li:nth-child(2) { 
   background-image: url(http://www.designyourway.net/drb/ths/diverse/designecomm/keizo_co_uk.jpg?674665);
-  animation-delay: 5s; 
+  animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
   background-image: url(https://eastsideco.com/storage/app/uploads/public/595/507/327/5955073277471650063450.jpg);
-  animation-delay: 10s; 
+  animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
   background-image: url(http://www.webshop999.com/blog/wp-content/uploads/2014/06/how-to-sell-products-on-ecommerce-website.png);
-  animation-delay: 15s; 
+  animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
   background-image: url(https://www.clickz.com/wp-content/uploads/sites/2/2016/02/AB-test-image-size.png);
-  animation-delay: 20s; 
+  animation-delay: 40s; 
 }
 @keyframes imageAnimation { 
   0% { 
