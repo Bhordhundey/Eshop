@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
         callback(err, products)
       })
     },
+    //using MongoDB aggregate function to filter on category
     function(callback){
       Product.aggregate([
         {$match: {}},
@@ -30,66 +31,12 @@ router.get('/', (req, res) => {
 
     // console.log("res1:", res1);
     // console.log("res2", res2);
-
       res.render('product/index', {
         products: res1,
         filteredProducts: res2
       })  
   })
-})
-
-// Index Route - Show All Products
-// router.get('/', (req, res) => {
-//   // Get all products from DB
-//   Product.find({})
-//     .then(products => {
-//       Product.aggregate([
-//         {$match: {}},
-//         {$group: {_id: "$category"}}
-//       ], (err, filteredProducts) => {
-//         if(err){
-//           throw err;
-//         } else {
-//           // console.log(filteredProducts);
-//         }
-//       })
-//       res.render('products/index', {
-//         products: products,
-//         // filteredProducts: filteredProducts
-//       })
-//     });
-// });
-
-
-// Index Route - Show All Products
-// router.get('/', (req, res) => {
-//   // Get all products from DB
-//   // Product.find({})
-//   //   .then(products => {
-      
-//   //   });
-//     Product.aggregate([
-//       {$match: {}},
-//       {$group: {_id: "$category"}}
-//     ], (err, filteredProducts) => {
-//       if(err){
-//         console.log(err)
-//       } else {
-//         // console.log(products)
-//         console.log(filteredProducts)
-//         res.render('product/index', {
-//           // products: products,
-//           filteredProducts: filteredProducts
-//         })
-//       }
-//     })
-
-// });
-
-
-// res.render('product/index', {
-//   products: products
-// });
+});
 
 
 //NEW - Show form to create new products
