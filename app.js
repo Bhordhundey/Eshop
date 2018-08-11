@@ -7,12 +7,11 @@ const mongoose = require('mongoose');
 
 // Load routes
 const productsRoutes = require('./routes/products');
+const filterRoutes = require('./routes/filter');
 
 const db = require('./config/database');
 
 // Connect to mongoose
-// mongoose.connect("mongodb://localhost/e-shop");  
-// mongoose.connect("mongodb://bhord:bhord1234@ds119052.mlab.com:19052/eshop")
 mongoose.connect(db.mongoURI)
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
@@ -35,6 +34,7 @@ app.get('/', (req, res) => {
 
 // Use routes
 app.use('/products', productsRoutes);
+app.use('/filter', filterRoutes);
 
 
 const port = process.env.PORT || 5004;

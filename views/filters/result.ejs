@@ -1,4 +1,4 @@
-  <% include ../partials/header %>
+<% include ../partials/header %>
 
 <div class="row m-5">
     <div class="col-lg-3">
@@ -10,11 +10,9 @@
                                 FILTER
                             </p>
                             <hr/>
-                            <select class="form-control" name="category" id="category" >
+                            <select class="form-control" name="" id="" >
                                 <option value="">Filter By Category</option>
-                                <% filteredProducts.forEach(function(filter) { %>
-                                    <option value="<%= filter._id %>"><%= filter._id %></option>
-                                <% }) %>
+                               
                             </select>
                             <div class="clearfix"></div>
                             <button class="btn add-apply">Apply</button>
@@ -24,6 +22,7 @@
         </div>
         
     </div>
+
     <div class="col-lg-9">
         <div class="row text-center" style= "display: flex; flex-wrap: wrap;">
             <% products.forEach(function(product){ %>
@@ -47,8 +46,7 @@
                     <%  }) %>
         </div>
     </div>
+
 </div>
-
   
-
   <% include ../partials/footer %>

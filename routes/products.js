@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const async = require('async');
 const router = express.Router();
 
-// Load Idea Model
+// Load Product Model
 require('../models/Product');
 const Product = mongoose.model('products');
 
